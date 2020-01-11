@@ -1,0 +1,16 @@
+FROM node:12-alpine
+
+WORKDIR usr/src/app
+
+COPY package.json /usr/src/app/package.json
+
+ENV DB_NAME=bitgames
+ENV DB_HOST=db_mysql
+ENV DB_USER=root
+ENV DB_PASS=scarstar
+ENV DB_ROOTPASS=supersecret
+
+RUN npm install
+RUN npm install -g nodemon
+
+CMD ["nodemon"]
