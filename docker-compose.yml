@@ -1,0 +1,74 @@
+version: '3.7'
+
+services:
+ 
+  node:
+    build:
+      context: ./services/node
+      dockerfile: Dockerfile-dev
+    restart: always
+    volumes:
+      - './services/node:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - 3001:3001
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - flyway
+
+  flyway:
+    image: boxfuse/flyway:5.2.4
+    # command: -url=jdbc:mysql://db -schemas=${DB_NAME} -user=root -password=${DB_ROOTPASS} -connectRetries=60 migrate
+    command: -url=jdbc:mysql://db -schemas=bitgames -user=root -password=P@ssw0rd -connectRetries=60 migrate
+    volumes:
+      - ./sql:/flyway/sql
+    container_name: flyway_migration
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: mysql
+    # command: --default-authentication-plugin=mysql_native_password
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - MYSQL_ROOT_PASSWORD=P@ssw0rd
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/mysql
+    container_name: db_mysql
+    
+  # client:
+  #   build:
+  #     context: ./services/client
+  #     dockerfile: Dockerfile-dev
+  #   volumes:
+  #     - './services/client:/usr/src/app'
+  #     - '/usr/src/app/node_modules'
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - NODE_ENV=development
+  #     - CHOKIDAR_USEPOLLING=true
+  #     - REACT_APP_API_URL=${REACT_APP_API_URL}
+  #   depends_on:
+  #     - node
+
+  nginx:
+    build:
+      context: ./services/nginx
+      dockerfile: Dockerfile-dev
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - node
+      # - client
+
+volumes:
+  data:
+    driver: "local"

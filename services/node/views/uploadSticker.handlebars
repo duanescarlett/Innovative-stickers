@@ -1,0 +1,52 @@
+<div class="container upgal">
+    <div class="row">
+        <div class="col-sm">
+            <img src='https://picsum.photos/536/347' class="rounded" height="100" width="150"/>
+        </div>
+        <div class="col-sm">
+            <img src='https://picsum.photos/536/348' class="rounded" height="100" width="150"/>
+        </div>
+        <div class="col-sm">
+            <img src='https://picsum.photos/536/349' class="rounded" height="100" width="150"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <img src='https://picsum.photos/536/351' class="rounded" height="100" width="150"/>
+        </div>
+        <div class="col-sm">
+            <img src='https://picsum.photos/536/352' class="rounded" height="100" width="150"/>
+        </div>
+        <div class="col-sm">
+            <img src='https://picsum.photos/536/353' class="rounded" height="100" width="150"/>
+        </div>
+    </div>
+
+    <hr />
+
+    <form method="post" action="upload" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Upload a Sticker</label>
+            <input type="file" class="form-control-file" id="sticker" name="sticker" accept="image/*">
+
+            <label for="exampleFormControlFile1">Discription</label>
+            <textarea class="form-control" id="discription" rows="3"></textarea>
+
+            <label for="exampleFormControlFile1">Add tags <small><i>Comma Separated</i></small></label>
+            <input type="text" class="form-control-file" id="tags" name="tags" >
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Upload Sticker</button>
+    </form>
+
+</div>
+<style>
+    .upgal{
+        margin-right: auto;
+        margin-left: auto;
+        border-left-color: aqua;
+        border-left-style: solid;
+        border-left-width: 1px;
+    }
+</style>
+

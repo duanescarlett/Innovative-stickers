@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Home Page</title>
+  {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /> --}}
+  <link rel="stylesheet" href="public/css/bootstrap.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="public/css/bootstrap.min.css.map" crossorigin="anonymous" />
+  <link rel="stylesheet" href="public/css/styles.css" crossorigin="anonymous" />
+  
+</head>
+
+<style>
+  .mainnav{
+    border-bottom-color:red;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    margin-bottom: 10px;
+  }
+
+  .email{
+    float: right;
+    margin-top: 10px;
+  }
+</style>
+<body>
+  <div class="container">
+    {{!-- <div class="mainnav">
+  <ul class="nav nav-pills justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="gallery">Gallery</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="uploadSticker">Upload</a>
+    </li>
+  
+    {{#if email}}
+      <li class="nav-item">
+        <a class="nav-link" href="auth/logout">Logout</a>
+      </li>
+      <p class="email">
+        <a href="profile">{{email}}</a>
+      </p>
+    {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+    {{/if}}
+    
+  </ul>
+  </div> --}}
+
+  {{{body}}}
+
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Bottom navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+        <li class="nav-item dropup">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Dropup</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown10">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </div>
+
+  <script src="public/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+  <script src="public/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="public/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="public/js/styles.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

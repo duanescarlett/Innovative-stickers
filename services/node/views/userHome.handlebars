@@ -1,0 +1,76 @@
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="left_col">
+			<div id="profile">
+
+				<div class="avatar-upload">
+					<div class="avatar-edit">
+						<input type='file' id="imageUpload" name="profilePic" accept=".png, .jpg, .jpeg" />
+						<label for="imageUpload"></label>
+					</div>
+					<div class="avatar-preview">
+						<div id="imagePreview" style="background-image: url(/uploads/{{{profilePic}}});">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+					Add Gallery Image
+				</button>
+			</p>
+
+			<div class="collapse" id="collapseExample">
+  				<div class="card card-body">
+					<form method="post" action="upload" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="exampleFormControlFile1">Discription</label>
+							<textarea class="form-control" id="discription" rows="3"></textarea>
+
+							<label for="exampleFormControlFile1">Add tags <small><i>Comma Separated</i></small></label>
+							<input type="text" class="form-control-file" id="tags" name="tags" >
+
+							<label for="exampleFormControlFile1">Upload a Sticker</label>
+							<input type="file" class="form-control-file" id="sticker" name="sticker" accept="image/*">
+						</div>
+						<button type="submit" class="btn btn-primary mb-2">Upload Sticker</button>
+					</form>
+				</div>
+		</div> {{!-- collapse --}}
+
+		<div class="icons">
+			<ul>
+				<li class="side-links"><a href=""><img src="/public/img/at.png" alt="at @ icon" /> Save List</a></li>
+				<li class="side-links"><a href=""><img src="/public/img/heart.png" alt="at @ icon" /> Favoites</a></li>
+				<li class="side-links"><a href="/logout"><img src="/public/img/sign-out.png" alt="at @ icon" /> Sign out</a></li>
+				{{!-- <li class="side-links">Collection</li>
+				<li class="side-links">Hash Tags</li> --}}
+			</ul>
+		</div>
+
+	</div>
+		<div class="col">
+			<div class="greeting">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+
+			<ul>
+			{{#each photo}}
+				<li class="gallery rounded border border-primary" data-toggle="popover">
+					<img id='imgpop' src='uploads/{{name}}' width="100" height="75" data-toggle="popover" />
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+		
+		
+	</div>
+
+</div>
+	
