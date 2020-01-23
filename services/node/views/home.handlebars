@@ -18,10 +18,119 @@
     }
 </style>
 
-<div class="bg">
-    <div>
-    <a href="/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
-    <a href="/signup" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Sign Up</a>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Innovative Stickers</a>
+  <form class="form-inline">
+
+    <a href="/login" 
+      class="btn btn-primary btn active" 
+      data-toggle="modal" 
+      data-target="#loginModal"
+      role="button" 
+      aria-pressed="true">Login</a>
+
+    <a href="/signup" 
+      class="btn btn-secondary btn active" 
+      data-toggle="modal" 
+      data-target="#signupModal"
+      role="button" 
+      aria-pressed="true">Sign Up</a>
+
+  </form>
+</nav>
+<div class="bg"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <form action="auth/" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <br />
+            <input type="email" name="email" placeholder="Email" required>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <br />
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+
+          <div class="modal-footer">
+            <small>Not Yet a Member? </small>
+            <a class="btn btn-secondary" href="/signup" role="button">Register</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+      
     </div>
+  </div>
 </div>
-  
+
+
+
+
+<!-- Modal Signup -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form action="/auth/signup/" method="POST">
+          {{!-- <input type="text" name="name" placeholder="Your Name" required> --}}
+          
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" name="name" placeholder="Your Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          
+          <div class="form-group form-check">
+            <input name="age_over" type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">I am over 18</label>
+          </div>
+          
+
+          <div class="modal-footer">
+            <small>Already a Member? </small>
+            <a class="btn btn-secondary" href="/login" role="button">Login</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+
+      </div>
+      
+    </div>
+  </div>
+</div>

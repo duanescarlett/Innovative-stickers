@@ -10,8 +10,8 @@
 
       .bg {
         /* The image used */
-        background-image: url("https://www.publicdomainpictures.net/pictures/280000/nahled/dark-blue-glitter-background.jpg");
-
+        /* background-image: url("https://www.publicdomainpictures.net/pictures/280000/nahled/dark-blue-glitter-background.jpg"); */
+        background-color: black;
         color: whitesmoke;
         /* Full height */
         height: 100%;
@@ -32,6 +32,16 @@
         margin-right: auto;
         text-align: center;
       }
+
+      .card {
+        width: 130px;
+        height: 195px;
+        background: url("/public/img/lg-star.png") no-repeat;
+        display: inline-block;
+      }
+      .card:hover {
+          background: url("/public/img/lg-star-flipped.png") no-repeat;
+      }
     </style>
   </head>
   <body>
@@ -41,13 +51,13 @@
           <div class="row">
             <!-- <div class="col-12 col-md-8">.col-12 .col-md-8</div> -->
             <h3>Innovative Sticker</h3>
-            <div class="col-6 col-md-4"><a><img src="/public/img/lg-star.png" /></a></div>
+            <div class="col-6 col-md-4"><a><p class="card"></p></a></div>
             <p>This site is under construction</p>
           </div> <!-- row -->
           <div class="row">
               <!-- <div class="col-6 col-md-4">.col-6 .col-md-4</div> -->
               <h3>Innovative Sticker</h3>
-            <div class="col-12 col-md-8"><a href="/home"><img src="/public/img/lg-star.png" /></a></div>
+            <div class="col-12 col-md-8"><a href="/home"><p class="card"></p></a></div>
             <p>Click to enter</p>
           </div> <!-- row -->
         </div>
