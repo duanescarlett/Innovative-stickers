@@ -2,6 +2,7 @@ const createError = require('http-errors')
 const express = require('express')
 const handlebars = require('express-handlebars')
 var session = require('express-session')
+var cookieParser = require('cookie-parser')
 
 const authRouter = require('./routes/auth')
 const upload = require('./routes/upload')
@@ -14,7 +15,7 @@ const app = express()
 app.engine('handlebars', handlebars())
 app.set('view engine', 'handlebars')
 // app.set('views', 'views/layouts/')
-
+app.use(cookieParser())
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -37,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.get('/home', (req, res, next) => {
     if(req.session.loggedin){
-
+        res.cookie('cookie', 'cooking')
         User.findOne({
             where: {
                 email: req.session.email

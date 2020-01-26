@@ -36,9 +36,11 @@ $("#imageUpload").change(function() {
 
 $('.gallery').click(function(){
   // alert("JQUERY WORKS MOFO!!!")
+  var cook = document.cookie
   var img = $(this)
   img = img.children('#imgpop').attr('src')
-  console.log(img)
+  console.log("This is the cookie: ->")
+  console.log(cook)
   var popImg = "<div id='imgPop' onClick='closeImage()'></div>"
   popImg = popImg.concat(
     "<div class='modalpop'><img id='img' class='rounded mx-auto d-block' width='300' height='500' src='"+img+"' /><div class='row'><div class='col-8'>col-8</div><div class='col-4'><ul id='popIcons'><li><img id='img' width='28' height='28' src='public/img/star.png' /></li><li><img id='img' width='28' height='28' src='public/img/download.png' /></li><li><img id='img' width='28' height='28' src='public/img/hearts.png' /></li><li><img id='img' width='28' height='28' src='public/img/dollar.png' /></li></ul></div></div></div>"
