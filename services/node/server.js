@@ -75,6 +75,7 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/userhome', (req, res, next) => {
+    res.cookie('cookie', 'cooking')
     if(req.session.loggedin){
 
         let dp = undefined
@@ -110,6 +111,7 @@ app.get('/userhome', (req, res, next) => {
 })
 
 app.get('/profile', (req, res) => {
+    res.cookie('cookie', 'cooking')
     if(req.session.loggedin){
         res.render('profile', {email: req.session.email})
         // res.send(req.session)

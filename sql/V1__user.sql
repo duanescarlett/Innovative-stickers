@@ -16,6 +16,7 @@ CREATE TABLE `photo` (
   `name`              VARCHAR(100) NOT NULL,
   `user`              VARCHAR(100) NOT NULL,
   `description`       VARCHAR(250),
+  `featured`          TINYINT NOT NULL,
   `created_at`        datetime NOT NULL,
   `updated_at`        datetime NOT NULL,
   PRIMARY KEY  (`id`)

@@ -54,6 +54,30 @@ function closeImage(){
   $('.modalpop').remove()
 }
 
-{/* <ul id='popIcons'><li><img id='img' width='28' height='28' src='public/img/star.png' /></li><li><img id='img' width='28' height='28' src='public/img/download.png' /></li><li><img id='img' width='28' height='28' src='public/img/hearts.png' /></li><li><img id='img' width='28' height='28' src='public/img/dollar.png' /></li></ul> */}
+function navAuth(){
+  var logout = $('.logoutBtn')
+  var login = $('.loginBtn')
+  var signup = $('.signupBtn')
 
-// $('.collapse').collapse('toggle')
+  logout.hide()
+  login.hide()
+  signup.hide()
+  console.log(document.cookie)
+
+  if(document.cookie === 'cookie=cooking'){
+    logout.show()
+    login.remove()
+    signup.remove()
+  }
+  else{
+    login.show()
+    signup.show()
+  }
+
+  logout.click(function(){
+    document.cookie = 'cookie=none'
+  })
+  
+}
+
+navAuth()

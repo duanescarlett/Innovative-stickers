@@ -19,11 +19,11 @@ const upload = multer({storage: storage, limits:{
 }})
 
 router.post('/', upload.single('sticker'), (req, res, next) => {
-    // console.log(req)
-    
+
     Photo.create({
         name: req.file.filename,
-        user: req.session.email
+        user: req.session.email,
+        description: req.session.dis
     })
     .then(() => {
         // console.log(req.body.tags)
