@@ -20,10 +20,16 @@ const upload = multer({storage: storage, limits:{
 
 router.post('/', upload.single('sticker'), (req, res, next) => {
 
+    let ans = false
+    if(req.body.featured === 'on'){
+        ans = true
+    }
+
     Photo.create({
         name: req.file.filename,
         user: req.session.email,
-        description: req.session.dis
+        description: req.session.dis,
+        featured: ans
     })
     .then(() => {
         // console.log(req.body.tags)

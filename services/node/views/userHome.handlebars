@@ -26,6 +26,7 @@
 
 			<div class="collapse" id="collapseExample">
   				<div class="card card-body">
+					{{!-- <form method="post" action="../routes/upload" enctype="multipart/form-data"> --}}
 					<form method="post" action="upload" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="exampleFormControlFile1">Discription</label>
@@ -36,6 +37,11 @@
 
 							<label for="exampleFormControlFile1">Upload a Sticker</label>
 							<input type="file" class="form-control-file" id="sticker" name="sticker" accept="image/*">
+
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" name="featured" id="exampleCheck1">
+								<label class="form-check-label" for="exampleCheck1">Want this photo to be Featured?</label>
+							</div>
 						</div>
 						<button type="submit" class="btn btn-primary mb-2">Upload Sticker</button>
 					</form>

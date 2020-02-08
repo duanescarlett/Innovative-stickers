@@ -59,10 +59,8 @@ app.get('/home', (req, res, next) => {
                 })
             })
             .catch(err => next(err));
-
         })
         .catch(err => next(err))
-
     }
     else{
         res.render('home')
@@ -99,11 +97,9 @@ app.get('/userhome', (req, res, next) => {
                     profilePic: proPic
                 })
             })
-            .catch(err => next(err));
-
+            .catch(err => next(err))
         })
         .catch(err => next(err))
-
     }
     else{
         res.render('home')

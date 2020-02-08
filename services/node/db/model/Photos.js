@@ -14,6 +14,10 @@ const Photo = connection.Sequelize.define('photo', {
     description: {
         type: Sequelize.STRING(250),
         allowNull: true
+    },
+    featured: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     }
     
 }, {
