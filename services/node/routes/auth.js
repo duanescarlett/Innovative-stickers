@@ -11,11 +11,10 @@ router.post('/', (req, res, next) => {
         }
     })
     .then(user => {
-        // console.log(res.data)
         req.session.id = req.body.email
         req.session.loggedin = true
         req.session.email = req.body.email
-        res.redirect('../../userhome')
+        res.redirect('../../user')
     })
     .catch(err => next(err));
 })

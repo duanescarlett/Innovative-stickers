@@ -1,5 +1,5 @@
-const connection = require('../Connection');
-const Sequelize = require('sequelize');
+const connection = require('../Connection')
+const Sequelize = require('sequelize')
 
 const Photo = connection.Sequelize.define('photo', {
     
@@ -24,4 +24,4 @@ const Photo = connection.Sequelize.define('photo', {
     tableName: 'photo'
 });
 
-module.exports = Photo;
+module.exports = Photo

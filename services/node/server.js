@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.get('/home', (req, res, next) => {
     if(req.session.loggedin){
-        res.cookie('cookie', 'cooking')
+        res.cookie('cookie', req.session.id)
         User.findOne({
             where: {
                 email: req.session.email
@@ -52,6 +52,7 @@ app.get('/home', (req, res, next) => {
                 attributes: ['name', 'user']
             })
             .then(pic => {
+                console.log(pic)
                 res.render('userHome', {
                     email: req.session.email,
                     photo: pic,
@@ -72,8 +73,8 @@ app.get('/logout', (req, res) => {
     res.render('home')
 })
 
-app.get('/userhome', (req, res, next) => {
-    res.cookie('cookie', 'cooking')
+app.get('/user', (req, res, next) => {
+    res.cookie('cookie', req.session.id)
     if(req.session.loggedin){
 
         let dp = undefined
@@ -118,6 +119,7 @@ app.get('/profile', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
+    
     res.render('login', {email: req.session.email})
 })
 
