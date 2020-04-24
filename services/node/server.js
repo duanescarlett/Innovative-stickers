@@ -1,32 +1,24 @@
 const createError = require('http-errors')
 const express = require('express')
+const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars')
-var session = require('express-session')
-var cookieParser = require('cookie-parser')
-
-const authRouter = require('./routes/auth')
+const jwt = require('jsonwebtoken')
+const authRouter = require('./routes/security')
 const upload = require('./routes/upload')
-const Photo = require('./db/model/Photos')
-const User = require('./db/model/User')
+const secRoute = require('./routes/security')
+// const Photo = require('./db/model/Photos')
+// const User = require('./db/model/User')
 
 const app = express()
 
 // Setup handlebars template engine
 app.engine('handlebars', handlebars())
 app.set('view engine', 'handlebars')
-// app.set('views', 'views/layouts/')
-app.use(cookieParser())
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}))
 
-console.log(__dirname)
 app.use(express.json())
-app.use(express.urlencoded({
-    extended: false
-}))
+app.use(express.urlencoded({extended: false}))
+app.use(bodyParser.json())
+app.use(secRoute)
 
 app.use('/public', express.static(__dirname + '/static'))
 app.use('/uploads', express.static(__dirname + '/uploads'))
@@ -119,8 +111,13 @@ app.get('/profile', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    
-    res.render('login', {email: req.session.email})
+    // Create the token for the session
+    let token = jwt.sign({
+        user: username
+    }, process.env.JWT_KEY, {
+        expiresIn: "24h"
+    })
+    res.render('login')
 })
 
 app.get('/signup', (req, res) => {
@@ -147,11 +144,11 @@ app.get('/uploadSticker', (req, res) => {
 app.use('/auth', authRouter)
 app.use('/upload', upload)
 
-app.use(function (req, res, next) {
-    next(createError(404));
+app.use((req, res, next) =>{
+    next(createError(404))
 })
 
-app.use(function (err, req, res, next) {
+app.use(function ( err, req, res, next) {
     res.status(err.status || 500);
     res.send({
         message: err.message
